@@ -10,7 +10,7 @@ actuallnya ketika di jalankan, vagrant akan membuat guest os di virtual box/vmwa
 # Beberapa command vagrant yang pernah saya gunakan. : 
 --------------------------------------------
 
-`vagrant box add laravel/homestead`
+> vagrant box add laravel/homestead
 command diatas akan mendownload box (kalau di docker namanya image ) laravel/homestead dari public vagrant repository.
 
 `vagrant box list`
