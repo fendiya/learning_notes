@@ -10,13 +10,13 @@ actuallnya ketika di jalankan, vagrant akan membuat guest os di virtual box/vmwa
 Beberapa command vagrant yang pernah saya gunakan. : 
 --------------------------------------------
 
-vagrant box add laravel/homestead
+`vagrant box add laravel/homestead`
 # command diatas akan mendownload box (kalau di docker namanya image ) laravel/homestead dari public vagrant repository.
 
-vagrant box list
+`vagrant box list`
 # command diatas akan melist box yang ada di lokal kita. 
 
-vagrant up
+> vagrant up
 # command ini akan menstart guest os/box. jika boxnya blm ada di lokal atau kita belum menjalankan "box add" maka command ini akan menjalankan command "box add"
 
 vagrant ssh
