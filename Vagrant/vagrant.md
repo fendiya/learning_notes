@@ -16,6 +16,9 @@ actuallnya ketika di jalankan, vagrant akan membuat guest os di virtual box/vmwa
 `vagrant box list`
 >command diatas akan melist box yang ada di lokal kita. 
 
+`vagrant global-status`
+>command diatas akan me list VM yang kita miliki beserta IDnya, ID ini bisa kita gunakan untuk men start VM tertentu dengan command `vagrant up id`
+
 `vagrant up`
 >command ini akan menstart guest os/box. jika boxnya blm ada di lokal atau kita belum menjalankan "box add" maka command ini akan menjalankan command "box add"
 
