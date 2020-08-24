@@ -1,8 +1,8 @@
 # Design OLTP Database
 Use normalization : \
-Why : to prevent data duplication (database size) and performance optimization duting Insert, Update or Delete.
+Why : to prevent data duplication (database size) and performance optimization during Insert, Update or Delete.
 
-1. 1st Level Normalisation Rule\
+1. 1st Level Normalisation Rule \
     1. Setiap kolom hanya berisikan satu data contohnya (bakso), tidak boleh seperti (bakso,gado-gado,es teler)
     2. setiap kolom berisikan data yang memiliki tipedata dan format yang sama. contohnya kalau kolom tgl lahir isinya (1 Januri 2001), maka tidak boleh ada value yang isinya (1 Kliwon bulan sura tahun 2001.\
     3. Nama kolom tidak boleh sama dalam satu table.\
@@ -10,20 +10,24 @@ Why : to prevent data duplication (database size) and performance optimization d
 
 2. 2nd Level Normalization Rule\
     1. Ketika table kita menggunakan composite key, tidak boleh ada kolom yang hanya bergantung pada satu key. Solusinya adalah dengan memecah table tersebut menjadi 2 table. Contoh: 
+
     `Table : Student_Score`
     |Student_ID|Subject_ID|Score|Teacher_Name|
     |----------|----------|-----|------------|
     |1|a1|100|fendi|
     |2|a1|100|fendi|
     |1|a2|100|Awan|
+    
     Table diatas memiliki composite Key yaitu student_id dan subject_id. yang bermasalah adalah kolom teacher_name, karena subject yang sama diajarkan oleh guru yang sama, artinya kolom techer_name hanya dependent dengan kolom subject_id dan tidak dengan student_id, maka lebih baik di pisah jadi 2 table seperti dibawah.\
     Masalah akan kita rasakan ketika misal ada perubah teacher_name dari fendi menjadi fendiy, maka akan ada 2 row yang harus di update (data duplication making more task/performace degradation). tapi dengan solusi dibawah hanya perlu satu row yang di update.\
+
     `Table : Student_Score`
     |Student_ID|Subject_ID|Score|
     |----------|----------|-----|
     |1|a1|100|fendi|
     |2|a1|100|fendi|
     |1|a2|100|Awan|
+
     `Table : Subject`
     |Subject_ID|Subject_Name|Teacher_Name|
     |----------|------------|------------|
@@ -32,6 +36,7 @@ Why : to prevent data duplication (database size) and performance optimization d
 
 3. 3rd Level Normalization Rule\
     1. Ketika menggunakan primary key, dan ada data yang tidak dependent ke primary kay tapi dependent key kolum lainnya. maka lebih baik di buat jadi 2 table. Contoh : 
+
     `Table : Student_Score`
      |Score_id|Student_ID|Subject_ID|Score|Exam_Tipe|Bobot_Nilai|
      |--------|----------|----------|-----|---------|-----------|
@@ -39,6 +44,7 @@ Why : to prevent data duplication (database size) and performance optimization d
      |2|2|a1|100|Teori|40|
      |3|1|a1|100|Praktik|60|
      Table diatas menunjukkan bobot nilai praktek 60 dan bobot nilai teori 40. jadi kolom bobot_nilai hanya dependent ke table Exam_tipe bukan score_id. solusinya seperti dibawah.
+
      `Table : Student_Score`
      |Score_id|Student_ID|Subject_ID|Score|Exam_id|
      |--------|----------|----------|-----|---------|
@@ -53,6 +59,7 @@ Why : to prevent data duplication (database size) and performance optimization d
      |2|Praktik|60|
      
 4. 3.5th/BNCF Level Normalization Rule\
+    1. 
 
 
 ## Jenis Key Dalam Table
