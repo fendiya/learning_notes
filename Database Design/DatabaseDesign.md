@@ -2,13 +2,13 @@
 Use normalization : \
 Why : to prevent data duplication (database size) and performance optimization during Insert, Update or Delete.
 
-1. 1st Level Normalisation Rule \
+## 1. 1st Level Normalisation Rule \
     1. Setiap kolom hanya berisikan satu data contohnya (bakso), tidak boleh seperti (bakso,gado-gado,es teler)
     2. setiap kolom berisikan data yang memiliki tipedata dan format yang sama. contohnya kalau kolom tgl lahir isinya (1 Januri 2001), maka tidak boleh ada value yang isinya (1 Kliwon bulan sura tahun 2001). \
     3. Nama kolom tidak boleh sama dalam satu table. \
     4. Urutan data tersimpan tidak masalah, gunakan fungsi order by di SQL untuk mengurutkan hasil data. \
 
-2. 2nd Level Normalization Rule\
+## 2. 2nd Level Normalization Rule\
     Ketika table kita menggunakan composite key, tidak boleh ada kolom yang hanya bergantung pada satu key. Solusinya adalah dengan memecah table tersebut menjadi 2 table. Contoh: 
 
     `Table : Student_Score`
@@ -34,7 +34,7 @@ Why : to prevent data duplication (database size) and performance optimization d
     |a1|java|fendi|
     |a2|php|awan|
 
-3. 3rd Level Normalization Rule \
+## 3. 3rd Level Normalization Rule \
     Ketika menggunakan primary key, dan ada data yang tidak dependent ke primary kay tapi dependent key kolum lainnya. maka lebih baik di buat jadi 2 table. Contoh : 
 
     `Table : Student_Score`
@@ -59,7 +59,7 @@ Why : to prevent data duplication (database size) and performance optimization d
      |1|Teori|40|
      |2|Praktik|60|
      
-4. 3.5th/BNCF Level Normalization Rule\
+## 4. 3.5th/BNCF Level Normalization Rule\
     Jika dalam satu table memiliki 2 kandidat composite key, maka labih baik di pisahkan jadi 2 table. Contoh : 
 
     `Table : Student`
