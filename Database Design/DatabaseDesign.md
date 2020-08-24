@@ -9,7 +9,7 @@ Why : to prevent data duplication (database size) and performance optimization d
     4. Urutan data tersimpan tidak masalah, gunakan fungsi order by di SQL untuk mengurutkan hasil data. \
 
 2. 2nd Level Normalization Rule\
-    1. Ketika table kita menggunakan composite key, tidak boleh ada kolom yang hanya bergantung pada satu key. Solusinya adalah dengan memecah table tersebut menjadi 2 table. Contoh: 
+    Ketika table kita menggunakan composite key, tidak boleh ada kolom yang hanya bergantung pada satu key. Solusinya adalah dengan memecah table tersebut menjadi 2 table. Contoh: 
 
     `Table : Student_Score`
     |Student_ID|Subject_ID|Score|Teacher_Name|
@@ -24,9 +24,9 @@ Why : to prevent data duplication (database size) and performance optimization d
     `Table : Student_Score`
     |Student_ID|Subject_ID|Score|
     |----------|----------|-----|
-    |1|a1|100|fendi|
-    |2|a1|100|fendi|
-    |1|a2|100|Awan|
+    |1|a1|100|
+    |2|a1|100|
+    |1|a2|100|
 
     `Table : Subject`
     |Subject_ID|Subject_Name|Teacher_Name|
@@ -35,7 +35,7 @@ Why : to prevent data duplication (database size) and performance optimization d
     |a2|php|awan|
 
 3. 3rd Level Normalization Rule \
-    1. Ketika menggunakan primary key, dan ada data yang tidak dependent ke primary kay tapi dependent key kolum lainnya. maka lebih baik di buat jadi 2 table. Contoh : 
+    Ketika menggunakan primary key, dan ada data yang tidak dependent ke primary kay tapi dependent key kolum lainnya. maka lebih baik di buat jadi 2 table. Contoh : 
 
     `Table : Student_Score`
      |Score_id|Student_ID|Subject_ID|Score|Exam_Tipe|Bobot_Nilai|
@@ -43,7 +43,7 @@ Why : to prevent data duplication (database size) and performance optimization d
      |1|1|a1|100|Teori|40|
      |2|2|a1|100|Teori|40|
      |3|1|a1|100|Praktik|60|
-     
+
      Table diatas menunjukkan bobot nilai praktek 60 dan bobot nilai teori 40. jadi kolom bobot_nilai hanya dependent ke table Exam_tipe bukan score_id. solusinya seperti dibawah.
 
      `Table : Student_Score`
@@ -60,8 +60,27 @@ Why : to prevent data duplication (database size) and performance optimization d
      |2|Praktik|60|
      
 4. 3.5th/BNCF Level Normalization Rule\
-    1. 
+    Jika dalam satu table memiliki 2 kandidat composite key, maka labih baik di pisahkan jadi 2 table. Contoh : 
 
+    `Table : Student`
+    |Student_ID|Subject_ID|Teacher_Name|
+    |----------|----------|------------|
+    |1|a1|fendi|
+    |2|a1|awan|
+
+    Kondisi yang di inginkan adalah satu subject bisa di ajarkan oleh teacher yang berbeda. dan table diatas memiliki composite key yaitu student_id dan Subject_id. tapi ada kandidat composite key yang lain yaitu subject_id dan techer_name. solusinya adalah dengan memecah menjadi 2 table yaitu : 
+
+     `Table : Student`
+    |Student_ID|Teacher_ID|
+    |----------|----------|
+    |1|t1|
+    |2|t2|
+
+     `Table : Teacher`
+    |Teacher_ID|Subject_ID|Teacher_Name|
+    |----------|----------|------------|
+    |t1|a1|fendi|
+    |t2|a1|awan|
 
 ## Jenis Key Dalam Table
 What is Key : Key adalah kolom yang bisa digunakan untuk membedakan satu row/data dengan data yang lainnya. ada 3 jenis key: \
