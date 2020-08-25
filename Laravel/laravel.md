@@ -42,7 +42,16 @@ Laravel Migration will modify our database objectes. it has 2 methods, up and do
 ##### Seeder
 Laravel seeder digunakan untuk menginsert data/membuat data dummy di table kita sebanyak data yang kita buat di file seeder. Jika ada 5 data yang kita buat maka akan ada 5 rows di DB. tapi jika command seeder `php artisan db:seed` dijalankan 2 kali maka akan ada 10 data.\
 
+secara default command db:seed hanya akan melihat isi file DatabaseSeeder.php, sehingga kita harus mendaftarkan file seeder kita ke file tersebut dengan menambahkan command `$this->call(EmployeePositionSeeder::class);`
+
 jika butuh membuat banyak data dummy kita bisa menggunakan laravel model factories, sama seperti mengenerate lorem ipsum.
+
+##### Factories
+Laravel Factories digunakan untuk mengenerate data dummy untuk database kita, untuk membuatnya gunakan command. \
+`php artisan make:factory -m EmployeePosition EmployeePositionFactory`
+command diatas akan menggenerate 1 file di database/factories/EmployeePositionFactory.php.\
+
+untuk mengenerate data dummy kita gunakan command yang sama dengan seeder yaitu `php artisan db;seed`, tapi sebelumnya kita harus me register factory file kita ke seeder filenya dengan cara mengedit seeder file dan menambahkan command `factory(EmployeePosition::class,10)->create();` artinya akan mengenerate 10 rows dummy data.
 
 #### Re generate autoload files
 ketika membuat migration/seeder maka laravel akan membuat file dan juga mengedit autoload file yang terdapat pada path vendor/composer/autoload_classmap.php. file ini bisa kita regenerate dengan command `composer dump-autoload`. maka composer akan melihat configurasi autoload/classmap yang ada di file composer.json. 
