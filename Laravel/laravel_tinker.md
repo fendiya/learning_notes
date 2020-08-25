@@ -28,3 +28,32 @@ Psy Shell v0.10.4 (PHP 7.4.8 — cli) by Justin Hileman
    }
 ```
 
+## Tinker Test Select DB
+```php
+vagrant@homestead:~/code/POS$ php artisan tinker
+>>> use App\EmployeePosition;
+>>> EmployeePosition::all();
+=> Illuminate\Database\Eloquent\Collection {#4047
+     all: [
+       App\EmployeePosition {#3800
+         id: 1,
+         position_name: "Store Administrator",
+         created_at: null,
+         updated_at: null,
+       },
+       App\EmployeePosition {#3432
+         id: 2,
+         position_name: "Store Administrator",
+         created_at: "2020-08-25 13:29:33",
+         updated_at: "2020-08-25 13:29:33",
+       },
+     ],
+   }
+>>> EmployeePosition::find(1);
+=> App\EmployeePosition {#3115
+     id: 1,
+     position_name: "Store Administrator",
+     created_at: null,
+     updated_at: null,
+   }
+```
