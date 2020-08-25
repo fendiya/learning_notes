@@ -1,5 +1,5 @@
 # what is it ? 
-Jika DBMS Mysql punya SQL query untuk berinteraksi seperti select/update/delete ke DBMS engine. maka Laravel punya Tinker untuk berinteraksi dengan aplikasi. berinterkasi seperti membuat model, mengetest object. 
+Jika DBMS Mysql punya SQL query untuk berinteraksi seperti select/update/delete ke DBMS engine. maka Laravel punya Tinker untuk berinteraksi dengan aplikasi. berinterkasi seperti membuat object, mengetest method/connection. 
 
 ## Tinker Test DB Connection
 ```php
@@ -27,3 +27,4 @@ Psy Shell v0.10.4 (PHP 7.4.8 — cli) by Justin Hileman
      },
    }
 ```
+
