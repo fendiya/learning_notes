@@ -36,7 +36,7 @@ actuallnya ketika di jalankan, vagrant akan membuat guest os di virtual box/vmwa
 >command ini akan mensuspend guest OS seperti hibernate, keuntungannya lebih cepat ketika mau menlanjutkan kerjaan. menyalakan kembali dengan command vagrant resume.
 
 `vagrant reload --provision` / `vagrant provision (box id)`
->gunakan command ini ketika ada perubahan di provision script, contoh kita melakukan perubahan mapping folder di file Homestead.yaml milik laravel (mapping file di file yaml ini maksudnya ingin menambahkan sharing folder di guestOS), maka untuk mereloadnya gunakan command ini. command ini akan merestart guest OS dan mengeksekusi kembali provision script kita (contohnya ingin mereload yaml file).
+>gunakan command ini ketika ada perubahan di provision script, contoh kita melakukan perubahan mapping folder di file Homestead.yaml milik laravel (actuallnya mapping file di file yaml ini akan menambahkan sharing folder dari hostOS ke guestOS), maka untuk mereloadnya gunakan command ini. command ini akan merestart guest OS dan mengeksekusi kembali provision script kita (contohnya ingin mereload yaml file).
 
 ## Start Vagrant without internet
 jika kita mendapat error ketika run vagrant up karena tidak ada internet, maka itu berarti vagrant box kita kita di set untuk selalu mengecek update ke suatu alamat contohnya adalah box laravel/homestead yang akan selalu melihat update ke vagrantcloud.com. salah satu cara agar vagrant tidak mengecek update adalah mendisable check update di vagrantfile, menambahkan parater `config.vm.box_check_update = false`, defaut valuenya adalah true. contoh seperti dibawah. \
