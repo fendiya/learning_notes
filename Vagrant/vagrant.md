@@ -39,8 +39,7 @@ actuallnya ketika di jalankan, vagrant akan membuat guest os di virtual box/vmwa
 >gunakan command ini ketika ada perubahan di provision script, contoh kita melakukan perubahan mapping folder di file Homestead.yaml milik laravel (mapping file di file yaml ini maksudnya ingin menambahkan sharing folder di guestOS), maka untuk mereloadnya gunakan command ini. command ini akan merestart guest OS dan mengeksekusi kembali provision script kita (contohnya ingin mereload yaml file).
 
 ## Start Vagrant without internet
-jika kita mendapat error ketika run vagrant up karena tidak ada internet, maka itu berarti vagrant kita di set untuk selalu 
-mengakses latest version of box. kalau kita defined versionnya maka ini tidak akan terjadi. salah satu cara agar vagrant tidak mengecek update adalah mendisable check update box nya `config.vm.box_check_update = false`. seperti dibawah. \
+jika kita mendapat error ketika run vagrant up karena tidak ada internet, maka itu berarti vagrant box kita kita di set untuk selalu mengecek update ke suatu alamat contohnya adalah box laravel/homestead yang akan selalu melihat update ke vagrantcloud.com. salah satu cara agar vagrant tidak mengecek update adalah mendisable check update di vagrantfile, menambahkan parater `config.vm.box_check_update = false`, defaut valuenya adalah true. contoh seperti dibawah. \
 
 Sebelumnya : \
 ```vagrantfile
