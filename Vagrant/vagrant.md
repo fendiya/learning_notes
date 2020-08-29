@@ -33,7 +33,7 @@ actuallnya ketika di jalankan, vagrant akan membuat guest os di virtual box/vmwa
 >command ini akan menshutdown guest OS. untuk start lagi pakai vagrant up
 
 `vagrant suspend`
->command ini akan mensuspend guest OS seperti hibernate tapi lebih cepat ketika mau menlanjutkan kerjaan. menyalakan kembali dengan command vagrant resume.
+>command ini akan mensuspend guest OS seperti hibernate, keuntungannya lebih cepat ketika mau menlanjutkan kerjaan. menyalakan kembali dengan command vagrant resume.
 
 `vagrant reload --provision` / `vagrant provision (box id)`
 >gunakan command ini ketika ada perubahan di provision script, contoh kita melakukan perubahan mapping folder di file Homestead.yaml milik laravel (mapping file di file yaml ini maksudnya ingin menambahkan sharing folder di guestOS), maka untuk mereloadnya gunakan command ini. command ini akan merestart guest OS dan mengeksekusi kembali provision script kita (contohnya ingin mereload yaml file).
