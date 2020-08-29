@@ -25,7 +25,7 @@ actuallnya ketika di jalankan, vagrant akan membuat guest os di virtual box/vmwa
 `vagrant ssh`
 >command ini sama dengan ssh ke dalam guest OS. untuk mencari detail environemnt variable yang digunakan untuk ssh gunakan command `vagrant ssh-config`.
 
-`set VAGRANT_LOG=ERROR/INFO/DEBUG`
+`set VAGRANT_LOG=ERROR/INFO/DEBUG` \
 `vagrant run / another command`
 >command di atas akan men set error level untuk membantu melakukan troubleshooting.
 
