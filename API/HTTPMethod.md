@@ -30,8 +30,7 @@
     </books>
 ```
 
-## to retrieve information from application
-### retrieve information
+### Retrieve information
 #### retrieve all books 
     URL : http://fendiyaditya.com/books \
     Method : GET \
