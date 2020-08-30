@@ -1,4 +1,4 @@
-# below are sample HTTP method
+# Below are HTTP URI and its method for development reference
 
 ## sample data schemas
 ```xml
@@ -67,3 +67,5 @@
 
 ##### Reference : \
 1. https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/ \
+2. https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+3. https://www.deepcrawl.com/knowledge/technical-seo-library/pagination-seo-guide/
