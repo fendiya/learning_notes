@@ -8,13 +8,19 @@ Log Level :
 -    2       Critical: --> A system or service error has occurred. The system can recover but there might be a momentary loss or permanent degradation of service.
 -    3       Error: --> A user error has occurred. The system or application can handle the error with no interruption and limited degradation of service.
 -    4       Warning: warning conditions  --> Suspicious Operation/Configuraion has occured, but it might not effect normal operation.
--    5       Notice: normal but significant condition --> high level information
--    6       Informational: informational messages --> Low level information
--    7       Debug: debug-level messages
-
+-    5       Notice: normal but significant condition --> high level information 
+-    6       Informational: informational messages --> Low Level information
+-    7       Debug: debug-level messages 
 oracle have another level : 
     8       Trace: very diagnostics --> TRACE messages follow the request path of a method.
 
+
+While developing Application it is enought to have only error level : 
+- DEBUG --> Logs that are mainly used by the developers and contain data such as response times, health checks, queues status etc. An example for a debug log would be “Number of messages in the user creation queue = 3482”
+- INFO --> Business processes and transactions, these logs should be readable for QA, Support and even advanced users to understand the system’s behavior. An example for an info log will contain data on a product purchase on your e-commerce platform, a user creation on your social media or a successful batch process on your data analytics solution.
+- WARNING --> These logs mean that something unusual happened or something isn’t right, but it does not necessarily mean that anything failed or that the user will notice a problem. An example of a warning would be “Received illegal character for username – “Jame$” , ignoring char” 
+- ERROR --> A problem that must be investigated, use the Error severity to log Disconnections, failed tasks or failures that reflect to your users. If you see an Error in your log that does not require immediate investigation, you should probably lower its severity.
+- CRITICAL --> Something terrible happened, stop everything and handle it, Crashes, Serious latency or performance issues, security problems. All these must be logged with the log severity Critical.
 
 ## What Information Should Exist : 
 Try to log in xml or json format, so it can be easily extracted and analyzed. and try to log in below format. Oracle have Log Services to learn More.
@@ -22,7 +28,7 @@ Try to log in xml or json format, so it can be easily extracted and analyzed. an
 -    [MachineName] --> Identifies the origins of the message like IP/Hostname
 -    [AppServerName] --> If we have clustered Apps Server in one IP than identify the Apps Server Node ID.
 -    [TimeStamp] --> in common format RFC 8601
--    [LogLevel] --> ALL CAPS DEBUG/INFO/NOTICE/WARN/ERROR
+-    [LogLevel] --> ALL CAPS DEBUG/INFO/WARN/ERROR
 -    [AppContext] --> App Name : Application Module Name, Oracle have SubSystem and Thread ID or Who write this Log
 -    [UserID] --> User identification/PUBLIC
 -    [ECID] --> One ID create by Requestor and used as reference for other distributed event     
@@ -110,3 +116,4 @@ https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html
 https://www.paladion.net/blogs/application-logs-security-best-practices
 https://wiki.splunk.com/images/8/8d/SplunkApplicationLoggingBestPractices_Template_2.3.pdf
 https://stackify.com/what-is-structured-logging-and-why-developers-need-it/
+https://coralogix.com/log-analytics-blog/java-logging-right/
