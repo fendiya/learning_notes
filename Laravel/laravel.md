@@ -1,3 +1,14 @@
+### Features : 
+- Blade : this is templating engine for building UI
+- Component : UI component that can be used to standarize our UI object like input, button, form, panel, etc.
+- Traits : it is like library/helper/util class, it can be used anywhere.
+- Eloquent : ORM 
+- Logging : it used Monolog, can have multiple handler dan formatter.
+- DB Migration : can be used to build/drop table in database
+- DB Seeder/Factory : can be used to seed dummy data or staic data for testing
+- 
+
+
 ### Setup HomeStead
 1. Install Vagrant\
 2. Install VirtualBox\
@@ -46,12 +57,26 @@ secara default command db:seed hanya akan melihat isi file DatabaseSeeder.php, s
 
 jika butuh membuat banyak data dummy kita bisa menggunakan laravel model factories, sama seperti mengenerate lorem ipsum.
 
+```php
+ DB::table('employee_positions')->insert([
+            'position_name'=>'Store Administrator',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+```
+
 ##### Factories
 Laravel Factories digunakan untuk mengenerate data dummy untuk database kita, untuk membuatnya gunakan command. \
 `php artisan make:factory -m EmployeePosition EmployeePositionFactory`
 command diatas akan menggenerate 1 file di database/factories/EmployeePositionFactory.php.\
 
 untuk mengenerate data dummy kita gunakan command yang sama dengan seeder yaitu `php artisan db;seed`, tapi sebelumnya kita harus me register factory file kita ke seeder filenya dengan cara mengedit seeder file dan menambahkan command `factory(EmployeePosition::class,10)->create();` artinya akan mengenerate 10 rows dummy data.
+
+```php
+factory(EmployeePosition::class,10)->create()->each(function ($positions){
+         $positions->employees()->saveMany(factory(Employee::class,5)->make());
+        });
+```
 
 #### Re generate autoload files
 ketika membuat migration/seeder maka laravel akan membuat file dan juga mengedit autoload file yang terdapat pada path vendor/composer/autoload_classmap.php. file ini bisa kita regenerate dengan command `composer dump-autoload`. maka composer akan melihat configurasi autoload/classmap yang ada di file composer.json. 
