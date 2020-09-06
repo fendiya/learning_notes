@@ -12,7 +12,7 @@ Log Level :
 -    6       Informational: informational messages --> Low Level information
 -    7       Debug: debug-level messages 
 oracle have another level : 
-    8       Trace: very diagnostics --> TRACE messages follow the request path of a method.
+    8       Trace: very diagnostics --> TRACE messages follow the request path of a method.  entrance >> and exit << of method
 
 
 While developing Application it is enought to have only error level : 
@@ -22,8 +22,46 @@ While developing Application it is enought to have only error level :
 - ERROR --> A problem that must be investigated, use the Error severity to log Disconnections, failed tasks or failures that reflect to your users. If you see an Error in your log that does not require immediate investigation, you should probably lower its severity.
 - CRITICAL --> Something terrible happened, stop everything and handle it, Crashes, Serious latency or performance issues, security problems. All these must be logged with the log severity Critical.
 
+Sample :
+INFO : 
+INFO  | User registered for newsletter. [user="Thomas", email="thomas@tuhrig.de"]
+INFO  | Newsletter send to user. [user="Thomas"]
+INFO  | User unsubscribed from newsletter. [user="Thomas", email="thomas@tuhrig.de"]
+
+INFO vs DEBUG : 
+DEBUG | Saved user to newsletter list. [user="Thomas", email="thomas@tuhrig.de"]
+DEBUG | Send welcome mail. [user="Thomas", email="thomas@tuhrig.de"]
+INFO  | User registered for newsletter. [user="Thomas", email="thomas@tuhrig.de"]
+DEBUG | Started cron job to send newsletter of the day. [subscribers=24332]
+INFO  | Newsletter send to user. [user="Thomas"]
+INFO  | User unsubscribed from newsletter. [user="Thomas", email="thomas@tuhrig.de"]
+
+Trace vs Debug:
+TRACE >> calcSalary()
+DEBUG | calcSalary() > Got param: 'empID'.
+TRACE << calcSalary() < Returning: 'Salary'.
+
+Error vs Warning : 
+```java
+// The REST call might have one of three outcomes:
+// It can work like a charm. That’s an INFO (after the call).
+// It can fail with an unexpected exception. That’s an ERROR (instead of the INFO log). //technology error
+// It can result in some expected exception. That’s a WARNING. //business error
+try {
+    restClient.makeRequest()
+    log.info("Made request to REST API. [url={}]", url)
+} catch(e: UnauthorizedException) {
+    log.warn("Request to REST API was rejected because user is unauthorized. [url={}, result={}]", url, result)
+} catch(e: Exception) {
+    log.error("Request to REST API failed. [url={}, exception={}]", url, exception)
+}
+
+```
 ## What Information Should Exist : 
 Try to log in xml or json format, so it can be easily extracted and analyzed. and try to log in below format. Oracle have Log Services to learn More.
+
+Log entry should answer following questions:
+  Who(UserName), When (Timestamp), Where(Context, ServletOrPage,Database), What (Command), Result (Exception) 
 
 -    [MachineName] --> Identifies the origins of the message like IP/Hostname
 -    [AppServerName] --> If we have clustered Apps Server in one IP than identify the Apps Server Node ID.
