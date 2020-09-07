@@ -6,7 +6,27 @@
 - Logging : it used Monolog, can have multiple handler dan formatter.
 - DB Migration : can be used to build/drop table in database
 - DB Seeder/Factory : can be used to seed dummy data or staic data for testing
-- 
+
+
+### Optimization
+#### During Development 
+- better to separate web and api project to minimize the autoload and processing. PHP is different than java, the framework will be executed everytime request coming. and if any services not required try to turn off the autoload.
+- careful using ORM, always analyze resulted query in DB, use RAW query if the performance more bettern than ORM.
+- Check if can Use cache like memcached/redis to store static data
+- Check if can use Queue with async methods, it will prevent concurrent overload.
+- use model cache if needed like https://github.com/GeneaLabs/laravel-model-caching or https://github.com/dwightwatson/rememberable.
+
+
+#### on Production
+- cache image/other multimedia to CDN like cloudinary,cloudflare, or send parameter browser cache control to cache and read locally.
+- cache controller using command `php artisan route:cache` if any changes in controller file execute to refresh cache `php artisan route:clear`. cache file usually will be at /App/bootstrap/routes.php
+- cache config file using command `php artisan config:cache` if any changes in config file like .env or others execute to refreshh cache `php artisan config:clear`. cache file usually will be at /App/bootstrap/config.php
+- cache blade file using command `php artisan view:cache` if any cahnges in blade file execute to refresh cache `php artisan view:clear`. cache file usually will located at /Storage/framework/cache/view/*
+- check opcache, enable it will make more faster. php will by compiled to bytecode each time request come. but if opcache enable, the second request come it wont compiled rather directly read the cached bytecode.
+
+
+### Deploying Laravel to Production
+https://laraveldaily.com/how-to-deploy-laravel-projects-to-live-server-the-ultimate-guide/
 
 
 ### Setup HomeStead
